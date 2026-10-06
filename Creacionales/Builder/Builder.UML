@@ -1,0 +1,26 @@
+@startuml
+class Partido {
+  - equipoLocal: String
+  - equipoVisitante: String
+  - estadio: String
+  - arbitro: String
+  - tieneVar: boolean
+  - Partido(builder: PartidoBuilder)
+}
+
+class PartidoBuilder {
+  - equipoLocal: String
+  - equipoVisitante: String
+  - estadio: String
+  - arbitro: String
+  - tieneVar: boolean
+  + PartidoBuilder(local: String, visitante: String)
+  + conEstadio(estadio: String): PartidoBuilder
+  + conArbitro(arbitro: String): PartidoBuilder
+  + conVar(tieneVar: boolean): PartidoBuilder
+  + construir(): Partido
+}
+
+Partido +-- PartidoBuilder : clase interna
+PartidoBuilder ..> Partido : <>
+@enduml
