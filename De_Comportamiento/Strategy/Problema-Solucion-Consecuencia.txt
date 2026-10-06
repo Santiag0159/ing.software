@@ -1,0 +1,21 @@
+Strategy (Comportamiento)
+
+Problema
+Un Torneo puede organizarse con distintos formatos (eliminación directa, fase de grupos, etc.). Si la lógica de todos los formatos está dentro de Torneo, termina con un if/else o switch gigante. Cada formato nuevo obliga a modificar esa clase, y el código se vuelve difícil de mantener y de probar.
+
+Solución
+Cada formato se encapsula en su propia clase que implementa la interfaz FormatoTorneo. Torneo (el contexto) guarda una referencia a la estrategia y delega en ella con simularFormato(equipos). Con setFormatoTorneo(...) se puede cambiar el formato en tiempo de ejecución sin tocar el torneo.
+
+Consecuencias
+
+Ventajas
+.Elimina los condicionales: el comportamiento se elige por composición.
+.Cumple el principio abierto/cerrado: se agrega un formato nuevo (por ejemplo, liga) creando una clase, sin modificar Torneo.
+.Cada algoritmo queda aislado y es fácil de probar por separado.
+.Permite intercambiar el comportamiento en ejecución.
+
+Desventajas
+.Aumenta la cantidad de clases (una por estrategia).
+.El cliente debe conocer las estrategias disponibles para elegir la correcta.
+.Si las estrategias necesitan datos distintos, la interfaz puede quedar forzada: algunas reciben parámetros que no usan.
+.Para algoritmos muy simples puede ser excesivo.
