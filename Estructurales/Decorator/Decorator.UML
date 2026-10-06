@@ -1,0 +1,38 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+' Componente Base (Interfaz)
+interface InscripcionTorneo {
+    + getDescripcion(): String
+    + getCosto(): double
+}
+
+' Componente Concreto
+class InscripcionBasica implements InscripcionTorneo {
+    - nombreEquipo: String
+    + getDescripcion(): String
+    + getCosto(): double
+}
+
+' Decorador Base (Abstracto)
+abstract class DecoradorInscripcion implements InscripcionTorneo {
+    # inscripcion: InscripcionTorneo
+    + getDescripcion(): String
+    + getCosto(): double
+}
+
+' Decoradores Concretos
+class SeguroMedicoDecorador extends DecoradorInscripcion {
+    + getDescripcion(): String
+    + getCosto(): double
+}
+
+class CoberturaMediaDecorador extends DecoradorInscripcion {
+    + getDescripcion(): String
+    + getCosto(): double
+}
+
+' Relación de Composición/Agregación (Auto-referencia / envoltorio)
+DecoradorInscripcion o-- "1" InscripcionTorneo : # inscripcion
+
+@enduml

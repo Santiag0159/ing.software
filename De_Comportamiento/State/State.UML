@@ -1,0 +1,52 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Partido {
+  - estadoActual: EstadoPartido
+  - golesLocal: int
+  - golesVisitante: int
+  + setEstado(e: EstadoPartido): void
+  + iniciar(): void
+  + pausar(): void
+  + anotarGol(equipo: String): void
+  + finalizar(): void
+}
+
+interface EstadoPartido <<interface>> {
+  + iniciar(partido: Partido): void
+  + pausar(partido: Partido): void
+  + anotarGol(p: Partido, equipo: String): void
+  + finalizar(partido: Partido): void
+}
+
+class EstadoProgramado implements EstadoPartido {
+  + iniciar(partido: Partido): void
+  + pausar(partido: Partido): void
+  + anotarGol(p: Partido, equipo: String): void
+  + finalizar(partido: Partido): void
+}
+
+class EstadoEnJuego implements EstadoPartido {
+  + iniciar(partido: Partido): void
+  + pausar(partido: Partido): void
+  + anotarGol(p: Partido, equipo: String): void
+  + finalizar(partido: Partido): void
+}
+
+class EstadoPausado implements EstadoPartido {
+  + iniciar(partido: Partido): void
+  + pausar(partido: Partido): void
+  + anotarGol(p: Partido, equipo: String): void
+  + finalizar(partido: Partido): void
+}
+
+class EstadoFinalizado implements EstadoPartido {
+  + iniciar(partido: Partido): void
+  + pausar(partido: Partido): void
+  + anotarGol(p: Partido, equipo: String): void
+  + finalizar(partido: Partido): void
+}
+
+Partido --> EstadoPartido : delegación / estadoActual
+
+@enduml
