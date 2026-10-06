@@ -1,0 +1,23 @@
+@startuml
+abstract class ManejadorValidacion {
+  # siguienteManejador: ManejadorValidacion
+  + setSiguiente(m: ManejadorValidacion)
+  + {abstract} validar(e: Equipo): boolean
+  # pasarAlSiguiente(e: Equipo): boolean
+}
+
+class ValidadorNombre {
+  + validar(e: Equipo): boolean
+}
+class ValidadorJugadores {
+  + validar(e: Equipo): boolean
+}
+class ValidadorDeudas {
+  + validar(e: Equipo): boolean
+}
+
+ManejadorValidacion <|-- ValidadorNombre
+ManejadorValidacion <|-- ValidadorJugadores
+ManejadorValidacion <|-- ValidadorDeudas
+ManejadorValidacion --> ManejadorValidacion : siguiente
+@enduml
