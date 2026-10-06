@@ -1,0 +1,37 @@
+@startuml
+
+@title Diagrama de clases - Patron Facade
+
+package "Estructurales.Facade" {
+    class Main {
+        +main(args: String[]): void
+    }
+
+    class TorneoFacade {
+        -sistemaEquipos: sistemaEquipos
+        -pasarelaPago: pasarelaPago
+        -servicioNotificaciones: servicioNotificaciones
+        +TorneoFacade()
+        +registrarEquipoEnTorneo(equipoId: Long, torneoId: Long, monto: Double): void
+    }
+
+    class sistemaEquipos {
+        +validarRequisitos(equipoId: Long): boolean
+        +registarenTorneo(equipoId: Long, torneoId: Long): void
+    }
+
+    class pasarelaPago {
+        +procesarPago(equipoId: Long, monto: Double): boolean
+    }
+
+    class servicioNotificaciones {
+        +enviarNotificacion(equipoId: Long, mensaje: String): void
+    }
+
+    Main ..> TorneoFacade : utiliza
+    TorneoFacade *-- sistemaEquipos : coordina
+    TorneoFacade *-- pasarelaPago : coordina
+    TorneoFacade *-- servicioNotificaciones : coordina
+}
+
+@enduml

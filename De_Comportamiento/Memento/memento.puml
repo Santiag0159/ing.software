@@ -1,0 +1,40 @@
+@startuml
+title Diagrama de clases - Patron Memento
+
+package "De_Comportamiento.Memento" {
+    class Main {
+        +main(args: String[]): void
+    }
+
+    class Originator {
+        -nombre: String
+        -faseActual: String
+        -equiposParticipantes: List<String>
+        +Originator(nombre: String, faseActual: String, equiposParticipantes: List<String>)
+        +createMemento(): TorneoMemento
+        +setMemento(memento: TorneoMemento): void
+    }
+
+    class TorneoMemento {
+        -faseActual: String
+        -equiposParticipantes: List<String>
+        +TorneoMemento(faseActual: String, equiposParticipantes: List<String>)
+        +getFaseActual(): String
+        +getEquiposParticipantes(): List<String>
+    }
+
+    class Caretaker {
+        -historial: Stack<TorneoMemento>
+        +guardarmEstado(memento: TorneoMemento): void
+        +getMemento(): TorneoMemento
+        +deshacer(): TorneoMemento
+    }
+
+    Main ..> Originator : crea y restaura
+    Main ..> Caretaker : guarda y deshace
+    Main ..> TorneoMemento : crea estados
+    Originator ..> TorneoMemento : crea / restaura
+    Caretaker "1" o-- "0..*" TorneoMemento : historial LIFO
+}
+
+@enduml
