@@ -1,0 +1,37 @@
+@startuml
+skinparam classAttributeIconSize 0
+interface IObservador {
+    +actualizar(golesLocal: int, golesVisitante: int): void
+}
+
+interface IObservable {
+    +suscribir(observador: IObservador): void
+    +desuscribir(observador: IObservador): void
+    +notificarObservadores(): void
+}
+
+class Partido {
+    -observadores: List<IObservador>
+    -golesLocal: int
+    -golesVisitante: int
+    +sumarGolLocal(): void
+    +sumarGolVisitante(): void
+    +suscribir(observador: IObservador): void
+    +desuscribir(observador: IObservador): void
+    +notificarObservadores(): void
+}
+
+class MarcadorEstadio {
+    +actualizar(golesLocal: int, golesVisitante: int): void
+}
+
+class AppMovilNotificacion {
+    +actualizar(golesLocal: int, golesVisitante: int): void
+}
+
+IObservable <|.. Partido
+IObservador <|.. MarcadorEstadio
+IObservador <|.. AppMovilNotificacion
+Partido -> "*" IObservador : observadores
+IObservable .> IObservador : notifica
+@enduml
