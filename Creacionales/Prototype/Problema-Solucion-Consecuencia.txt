@@ -1,0 +1,19 @@
+Prototype (Creacional)
+
+Problema
+Crear un objeto nuevo desde cero puede ser costoso o repetitivo. En el ejemplo, cada equipo que se registra necesita la misma configuración base (categoría, cantidad de jugadores, plantel estándar). Si se usa new Equipo(...) cada vez, hay que repetir esos datos y el código queda atado a la clase concreta. Además, si el objeto tiene listas u otros objetos internos, copiarlo a mano es propenso a errores.
+
+Solución
+Se define un prototipo, un objeto ya configurado, y los nuevos objetos se obtienen clonándolo con clone(). Equipo implementa Cloneable y sobrescribe clone(): copia los campos simples con super.clone() y crea una lista nueva para los jugadores (copia profunda). Luego se modifica solo lo que cambia, por ejemplo el nombre.
+
+Consecuencias
+
+Ventajas
+.Evita repetir la configuración inicial: se clona y se ajusta.
+.Se crean objetos sin depender de su clase concreta ni de su constructor.
+.Se pueden agregar o quitar prototipos en tiempo de ejecución.
+
+Desventajas
+.Clonar objetos con referencias a otros objetos es delicado: con copia superficial, original y clon comparten la misma lista, y un cambio en uno afecta al otro.
+.La copia profunda exige código adicional en clone(), que crece si hay objetos anidados.
+.En Java, Cloneable y Object.clone() tienen un diseño incómodo (excepción comprobada, método protegido), por eso muchos usan un constructor copia.
