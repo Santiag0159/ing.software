@@ -1,0 +1,20 @@
+@startuml
+skinparam classAttributeIconSize 0
+interface IProcesadorPago {
+    +pagarInscripcion(equipo: String, monto: double): void
+}
+
+class SistemaBancarioLegacy {
+    +ejecutarTransferencia(cantidad: float, concepto: String, idTransaccion: int): void
+}
+
+class BancoAdapter {
+    -sistemaBancario: SistemaBancarioLegacy
+    -generadorId: int
+    +BancoAdapter(sistemaBancario: SistemaBancarioLegacy)
+    +pagarInscripcion(equipo: String, monto: double): void
+}
+
+IProcesadorPago <|.. BancoAdapter
+BancoAdapter --> SistemaBancarioLegacy : adapta / delega
+@enduml
