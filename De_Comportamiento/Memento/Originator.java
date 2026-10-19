@@ -1,7 +1,6 @@
 package De_Comportamiento.Memento;
-import java.util.ArrayList;
-import java.util.List;
 
+import java.util.List;
 public class Originator {
     private String nombre;
     private String faseActual;

@@ -1,0 +1,41 @@
+@startuml
+title Diagrama de clases - Patron Command
+
+package "De_Comportamiento.Command" {
+    interface ComandoTorneo {
+        +ejecutar(): void
+    }
+
+    class InscribirEquipoCommand {
+        -torneo: Torneo
+        -nombreEquipo: String
+        +ejecutar(): void
+    }
+
+    class IniciarTorneoCommand {
+        -torneo: Torneo
+        +ejecutar(): void
+    }
+
+    class ControladorTorneo {
+        +invocar(comando: ComandoTorneo): void
+    }
+
+    class Torneo {
+        -nombre: String
+        -equipos: List<String>
+        -iniciado: boolean
+        +inscribirEquipo(nombreEquipo: String): void
+        +iniciar(): void
+    }
+
+    class MainCommand
+
+    ComandoTorneo <|.. InscribirEquipoCommand
+    ComandoTorneo <|.. IniciarTorneoCommand
+    InscribirEquipoCommand --> Torneo : solicita inscripcion
+    IniciarTorneoCommand --> Torneo : solicita inicio
+    ControladorTorneo ..> ComandoTorneo : invoca
+    MainCommand ..> ControladorTorneo
+}
+@enduml

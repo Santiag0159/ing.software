@@ -1,0 +1,29 @@
+@startuml
+interface Entrada {
+  + getTipo(): String
+  + getComprador(): String
+  + getPrecio(): double
+}
+
+class EntradaGeneral
+class EntradaVIP
+
+abstract class FabricaEntradas {
+  + crearEntrada(comprador: String): Entrada
+  + venderEntrada(comprador: String): void
+}
+
+class FabricaEntradaGeneral {
+  + crearEntrada(comprador: String): Entrada
+}
+
+class FabricaEntradaVIP {
+  + crearEntrada(comprador: String): Entrada
+}
+
+EntradaGeneral ..|> Entrada
+EntradaVIP ..|> Entrada
+FabricaEntradaGeneral --|> FabricaEntradas
+FabricaEntradaVIP --|> FabricaEntradas
+FabricaEntradas ..> Entrada : crea y utiliza
+@enduml

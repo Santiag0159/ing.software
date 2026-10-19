@@ -8,5 +8,5 @@ public class sistemaEquipos {
     public void registarenTorneo(Long equipoId, Long torneoId) {
         System.out.println("Registrando equipo " + equipoId + " en el torneo " + torneoId);
     }
-
+    
 }

@@ -1,0 +1,48 @@
+@startuml
+title Diagrama de clases - Patron Visitor
+
+package "De_Comportamiento.Visitor" {
+    interface ElementoTorneo {
+        +aceptar(visitante: VisitanteTorneo): void
+    }
+
+    interface VisitanteTorneo {
+        +visitar(equipo: Equipo): void
+        +visitar(partido: Partido): void
+    }
+
+    class Equipo {
+        -nombre: String
+        +getNombre(): String
+        +aceptar(visitante: VisitanteTorneo): void
+    }
+
+    class Partido {
+        -equipoLocal: Equipo
+        -equipoVisitante: Equipo
+        -golesLocal: int
+        -golesVisitante: int
+        +aceptar(visitante: VisitanteTorneo): void
+    }
+
+    class VisitanteEstadisticasTorneo {
+        -cantidadEquipos: int
+        -cantidadPartidos: int
+        -totalGoles: int
+        +visitar(equipo: Equipo): void
+        +visitar(partido: Partido): void
+        +mostrarResumen(): void
+    }
+
+    class MainVisitor
+
+    ElementoTorneo <|.. Equipo
+    ElementoTorneo <|.. Partido
+    VisitanteTorneo <|.. VisitanteEstadisticasTorneo
+    VisitanteEstadisticasTorneo ..> Equipo : visita
+    VisitanteEstadisticasTorneo ..> Partido : visita
+    Partido --> Equipo : participantes
+    MainVisitor ..> ElementoTorneo : recorre
+    MainVisitor ..> VisitanteEstadisticasTorneo : utiliza
+}
+@enduml

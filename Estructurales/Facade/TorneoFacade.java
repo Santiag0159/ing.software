@@ -12,19 +12,21 @@ public class TorneoFacade {
     }
 
     public void registrarEquipoEnTorneo(Long equipoId, Long torneoId, Double monto) {
-        if (sistemaEquipos.validarRequisitos(equipoId)) {
-            if (pasarelaPago.procesarPago(equipoId, monto)) {
-                sistemaEquipos.registarenTorneo(equipoId, torneoId);
-                servicioNotificaciones.enviarNotificacion(equipoId, "Registro exitoso en el torneo " + torneoId);
-            } else {
-                servicioNotificaciones.enviarNotificacion(equipoId, "Error en el pago para el torneo " + torneoId);
-            }
-        } else {
-            servicioNotificaciones.enviarNotificacion(equipoId, "El equipo no cumple con los requisitos para el torneo " + torneoId);
+        if (!sistemaEquipos.validarRequisitos(equipoId)) {
+            servicioNotificaciones.enviarNotificacion(equipoId,
+                    "El equipo no cumple con los requisitos para el torneo " + torneoId);
+            return;
         }
-    
-    sistemaEquipos.registarenTorneo(equipoId, torneoId);
-    servicioNotificaciones.enviarNotificacion(equipoId, "Registro exitoso en el torneo " + torneoId);
-    System.out.println("________________________inscrpcion finalizada con exito__________________________");
+
+        if (!pasarelaPago.procesarPago(equipoId, monto)) {
+            servicioNotificaciones.enviarNotificacion(equipoId,
+                    "Error en el pago para el torneo " + torneoId);
+            return;
+        }
+
+        sistemaEquipos.registarenTorneo(equipoId, torneoId);
+        servicioNotificaciones.enviarNotificacion(equipoId,
+                "Registro exitoso en el torneo " + torneoId);
+        System.out.println("________________________inscrpcion finalizada con exito__________________________");
     }
 }

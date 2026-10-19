@@ -1,6 +1,6 @@
 @startuml
-
-@title Diagrama de clases - Patron Facade
+skinparam classAttributeIconSize 0
+title Diagrama de clases - Patron Facade
 
 package "Estructurales.Facade" {
     class Main {
