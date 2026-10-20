@@ -1,0 +1,53 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+package "iterator" {
+
+    class Jugador {
+        - nombre : String
+        - goles : int
+        + Jugador(nombre: String, goles: int)
+        + getNombre() : String
+        + getGoles() : int
+    }
+
+    interface IteradorGoleadores {
+        + tieneSiguiente() : boolean
+        + siguiente() : Jugador
+    }
+
+    interface ColeccionGoleadores {
+        + crearIterador() : IteradorGoleadores
+    }
+
+    class IteradorArrayGoleadores {
+        - goleadores : Jugador[]
+        - posicion : int
+        + IteradorArrayGoleadores(goleadores: Jugador[])
+        + tieneSiguiente() : boolean
+        + siguiente() : Jugador
+    }
+
+    class GoleadoresPrimeraA {
+        - goleadores : Jugador[]
+        - indice : int
+        + GoleadoresPrimeraA(capacidad: int)
+        + agregarJugador(nombre: String, goles: int) : void
+        + crearIterador() : IteradorGoleadores
+    }
+
+    class Main {
+        + {static} imprimirTablaGoleadores(torneo: String, coleccion: ColeccionGoleadores) : void
+        + {static} main(args: String[]) : void
+    }
+}
+
+' Relaciones
+IteradorArrayGoleadores ..|> IteradorGoleadores : implementa
+GoleadoresPrimeraA ..|> ColeccionGoleadores : implementa
+GoleadoresPrimeraA ..> IteradorArrayGoleadores : crea >
+IteradorArrayGoleadores "1" o-- "*" Jugador : recorre >
+Main ..> ColeccionGoleadores : usa >
+Main ..> IteradorGoleadores : usa >
+
+@endl

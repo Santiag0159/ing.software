@@ -1,0 +1,37 @@
+@startuml flyweight
+skinparam classAttributeIconSize 0
+
+package "UML" {
+
+    class TipoTarjeta {
+        - color : String
+        - textoReglamento : String
+        - iconoHD : String
+        + TipoTarjeta(color: String, textoReglamento: String, iconoHD: String)
+        + aplicarSancion(jugador: String, minuto: int, partido: String) : void
+        + getColor() : String
+    }
+
+    class TarjetaFactory {
+        - {static} pool : Map<String, TipoTarjeta>
+        + {static} getTipoTarjeta(color: String) : TipoTarjeta
+        + {static} getCantidadInstanciasEnMemoria() : int
+    }
+
+    class GestorSanciones {
+        - contadorAmarillas : Map<String, Integer>
+        + registrarFalta(jugador: String, tipoTarjeta: String, minuto: int, partido: String) : void
+    }
+
+    class Main {
+        + {static} main(args: String[]) : void
+    }
+}
+
+' Relaciones
+TarjetaFactory "1" o-- "*" TipoTarjeta : administra / liquida >
+GestorSanciones ..> TarjetaFactory : consulta >
+GestorSanciones ..> TipoTarjeta : invoca >
+Main ..> GestorSanciones : usa >
+
+@enduml

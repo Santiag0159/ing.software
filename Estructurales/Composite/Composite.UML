@@ -1,0 +1,43 @@
+@startuml composite
+skinparam classAttributeIconSize 0
+
+package "UML" {
+
+    interface ElementoTorneo {
+        + getNombre() : String
+        + getCostoInscripcion() : double
+        + mostrarEstructura(sangria: String) : void
+    }
+
+    class Equipo {
+        - nombre : String
+        - costoInscripcion : double
+        + Equipo(nombre: String, costoInscripcion: double)
+        + getNombre() : String
+        + getCostoInscripcion() : double
+        + mostrarEstructura(sangria: String) : void
+    }
+
+    class EstructuraCompuesta {
+        - nombre : String
+        - elementos : List<ElementoTorneo>
+        + EstructuraCompuesta(nombre: String)
+        + agregar(elemento: ElementoTorneo) : void
+        + eliminar(elemento: ElementoTorneo) : void
+        + getNombre() : String
+        + getCostoInscripcion() : double
+        + mostrarEstructura(sangria: String) : void
+    }
+
+    class Main {
+        + {static} main(args: String[]) : void
+    }
+}
+
+' Relaciones
+Equipo ..|> ElementoTorneo : implementa
+EstructuraCompuesta ..|> ElementoTorneo : implementa
+EstructuraCompuesta "1" o-- "*" ElementoTorneo : contiene (Composición) >
+Main ..> ElementoTorneo : usa >
+
+@enduml
