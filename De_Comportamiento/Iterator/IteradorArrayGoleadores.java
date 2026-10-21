@@ -1,6 +1,6 @@
 package De_Comportamiento.Iterator;
 
-public class IteradorArrayGoleadores implements IteradorGoleadores {
+public class IteradorArrayGoleadores{
     private final Jugador[] goleadores;
     private int posicion = 0;
 

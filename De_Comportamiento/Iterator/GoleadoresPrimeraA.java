@@ -15,7 +15,7 @@ public class GoleadoresPrimeraA implements ColeccionGoleadores {
     }
 
     @Override
-    public IteradorGoleadores crearIterador() {
+    public IteradorArrayGoleadores crearIterador() {
         return new IteradorArrayGoleadores(goleadores);
     }
 }
