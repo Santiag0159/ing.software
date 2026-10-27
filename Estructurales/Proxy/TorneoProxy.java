@@ -11,7 +11,6 @@ public class TorneoProxy implements ITorneo {
 
     @Override
     public void registrarEquipo(String equipo) {
-        // Lógica de intercepción y control de acceso
         if ("ADMIN".equalsIgnoreCase(usuarioActual.getRol())) {
             System.out.println("Proxy: Permiso concedido a " + usuarioActual.getNombre());
             torneoReal.registrarEquipo(equipo);
@@ -22,7 +21,6 @@ public class TorneoProxy implements ITorneo {
 
     @Override
     public void mostrarEquipos() {
-        // Supongamos que la lectura es pública, el Proxy simplemente delega sin filtrar
         torneoReal.mostrarEquipos();
     }
 }

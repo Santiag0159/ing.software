@@ -2,7 +2,7 @@ package Estructurales.Proxy;
 
 public class Usuario {
     private String nombre;
-    private String rol; // Puede ser "ADMIN" o "INVITADO"
+    private String rol;
 
     public Usuario(String nombre, String rol) {
         this.nombre = nombre;
