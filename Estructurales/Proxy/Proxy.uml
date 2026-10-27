@@ -1,0 +1,33 @@
+@startuml
+class Usuario {
+  - nombre: String
+  - rol: String
+  + Usuario(nombre: String, rol: String)
+  + getNombre(): String
+  + getRol(): String
+}
+
+interface ITorneo {
+  + registrarEquipo(equipo: String): void
+  + mostrarEquipos(): void
+}
+
+class TorneoReal {
+  - equipos: List<String>
+  + registrarEquipo(equipo: String): void
+  + mostrarEquipos(): void
+}
+
+class TorneoProxy {
+  - torneoReal: TorneoReal
+  - usuarioActual: Usuario
+  + TorneoProxy(usuarioActual: Usuario, torneoReal: TorneoReal)
+  + registrarEquipo(equipo: String): void
+  + mostrarEquipos(): void
+}
+
+TorneoReal ..|> ITorneo
+TorneoProxy ..|> ITorneo
+TorneoProxy --> TorneoReal : delega a >
+TorneoProxy --> Usuario : verifica rol de >
+@enduml

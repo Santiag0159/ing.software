@@ -1,0 +1,19 @@
+@startuml
+class Equipo {
+  - nombre: String
+  + Equipo(nombre: String)
+  + getNombre(): String
+}
+
+class TorneoManager {
+  - {static} instancia: TorneoManager
+  - equiposInscriptos: List<Equipo>
+  - TorneoManager()
+  + {static} getInstancia(): TorneoManager
+  + registrarEquipo(equipo: Equipo): void
+  + mostrarEquipos(): void
+}
+
+TorneoManager --> TorneoManager : instancia única
+TorneoManager o-- Equipo : contiene >
+@enduml
