@@ -16,34 +16,49 @@ public class Equipo implements Cloneable {
         this.jugadores = new ArrayList<>();
     }
 
-    // Getters y Setters
-    public String getNombre() { return nombre; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
+    public String getNombre() { 
+        return nombre; 
+    }
+    public void setNombre(String nombre) { 
+        this.nombre = nombre; 
+    }
 
-    public String getCategoria() { return categoria; }
-    public void setCategoria(String categoria) { this.categoria = categoria; }
+    public String getCategoria() { 
+        return categoria; 
+    }
+    public void setCategoria(String categoria) { 
+        this.categoria = categoria; 
+    }
 
-    public int getCantidadJugadores() { return cantidadJugadores; }
-    public void setCantidadJugadores(int cantidadJugadores) { this.cantidadJugadores = cantidadJugadores; }
+    public int getCantidadJugadores() { 
+        return cantidadJugadores; 
+    }
+    public void setCantidadJugadores(int cantidadJugadores) { 
+        this.cantidadJugadores = cantidadJugadores; 
+    }
 
-    public List<String> getJugadores() { return jugadores; }
+    public List<String> getJugadores() { 
+        return jugadores; 
+    }
 
-    public void agregarJugador(String jugador) { jugadores.add(jugador); }
+    public void agregarJugador(String jugador) { 
+        jugadores.add(jugador); 
+    }
 
     // Clonación PROFUNDA
     @Override
     public Equipo clone() {
         try {
             Equipo copia = (Equipo) super.clone();  //Copia de los campos
-            copia.jugadores = new ArrayList<>(this.jugadores); //Generamos una nueva lista indepediente 
+            copia.jugadores = new ArrayList<>(this.jugadores); //Generamos una nueva lista independiente 
             return copia;
         } catch (CloneNotSupportedException e) {
-            throw new AssertionError(e); // no ocurre: implementamos Cloneable
+            throw new AssertionError(e);
         }
     }
 
     @Override
     public String toString() {
-        return "Equipo [Nombre: " + nombre + ", Categoria: " + categoria + ", Jugadores: " + cantidadJugadores + ", Plantel: " + jugadores + "]";
+        return "Equipo (Nombre: " + nombre + ", Categoria: " + categoria + ", Jugadores: " + cantidadJugadores + ", Plantel: " + jugadores + ")";
     }
 }

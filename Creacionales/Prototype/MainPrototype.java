@@ -4,21 +4,19 @@ public class MainPrototype {
     public static void main(String[] args) {
         
         //Prototipo Base
-        Equipo equipoBase = new Equipo("Equipo Base", "Libre", 11);
-        equipoBase.agregarJugador("Arquero");
-        equipoBase.agregarJugador("Defensor");
-        System.out.println("Prototipo Original: " + equipoBase);
+        Equipo equipoBase = new Equipo("Equipo Base", "Primera", 11);
+        System.out.println("\nPrototipo: " + equipoBase +"\n");
 
-        // 2. Clonar y personalizar
+        //Clonar
         Equipo equipo1 = equipoBase.clone();
-        equipo1.setNombre("Los Leones FC");
-        equipo1.agregarJugador("Delantero León");
-        System.out.println("Equipo Registrado 1: " + equipo1);
+        equipo1.setNombre("Atlas");
+        equipo1.agregarJugador("Volante: Zenon");
+        System.out.println(equipo1 + "\n");
 
         Equipo equipo2 = equipoBase.clone();
-        equipo2.setNombre("Deportivo Ciclón");
-        equipo2.agregarJugador("Delantero Ciclón");
-        System.out.println("Equipo Registrado 2: " + equipo2);
+        equipo2.setNombre("Boca Juniors");
+        equipo2.agregarJugador("Delantero: Benedetto");
+        System.out.println(equipo2 + "\n");
         
     }
 }
