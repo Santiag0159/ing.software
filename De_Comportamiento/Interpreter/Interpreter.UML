@@ -1,0 +1,31 @@
+@startuml
+skinparam classAttributeIconSize 0
+package De_Comportamiento.interpreter {
+    interface ExpresionElegibilidad {
+        + interpretar(perfilJugador: String): boolean
+    }
+
+    class ReglaEspecifica implements ExpresionElegibilidad {
+        - requisito: String
+        + ReglaEspecifica(requisito: String)
+        + interpretar(perfilJugador: String): boolean
+    }
+
+    class ExpresionAnd implements ExpresionElegibilidad {
+        - expr1: ExpresionElegibilidad
+        - expr2: ExpresionElegibilidad
+        + ExpresionAnd(expr1: ExpresionElegibilidad, expr2: ExpresionElegibilidad)
+        + interpretar(perfilJugador: String): boolean
+    }
+
+    class ExpresionOr implements ExpresionElegibilidad {
+        - expr1: ExpresionElegibilidad
+        - expr2: ExpresionElegibilidad
+        + ExpresionOr(expr1: ExpresionElegibilidad, expr2: ExpresionElegibilidad)
+        + interpretar(perfilJugador: String): boolean
+    }
+
+    ExpresionAnd o--> ExpresionElegibilidad : evalúa
+    ExpresionOr o--> ExpresionElegibilidad : evalúa
+}
+@enduml

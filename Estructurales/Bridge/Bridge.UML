@@ -1,0 +1,35 @@
+@startuml
+skinparam classAttributeIconSize 0
+package Estructurales.Bridge {
+    interface SistemaFixture {
+        + generarCalendario(nombreTorneo: String): void
+    }
+
+    class FixtureLiga implements SistemaFixture {
+        + generarCalendario(nombreTorneo: String): void
+    }
+
+    class FixtureEliminatoria implements SistemaFixture {
+        + generarCalendario(nombreTorneo: String): void
+    }
+
+    abstract class Torneo {
+        # sistemaFixture: SistemaFixture
+        # nombre: String
+        # Torneo(sistemaFixture: SistemaFixture, nombre: String)
+        + {abstract} organizar(): void
+    }
+
+    class TorneoAmateur extends Torneo {
+        + TorneoAmateur(sistemaFixture: SistemaFixture, nombre: String)
+        + organizar(): void
+    }
+
+    class TorneoProfesional extends Torneo {
+        + TorneoProfesional(sistemaFixture: SistemaFixture, nombre: String)
+        + organizar(): void
+    }
+
+    Torneo o--> SistemaFixture : tiene
+}
+@enduml

@@ -1,0 +1,48 @@
+@startuml
+skinparam classAttributeIconSize 0
+package Creacionales.abstractfactory {
+    interface Cancha {
+        + prepararCancha(): void
+    }
+
+    interface Arbitro {
+        + pitarInicio(): void
+    }
+
+    interface TorneoFactory {
+        + crearCancha(): Cancha
+        + crearArbitro(): Arbitro
+    }
+
+    class CanchaFutbol implements Cancha {
+        + prepararCancha(): void
+    }
+
+    class CanchaBasquet implements Cancha {
+        + prepararCancha(): void
+    }
+
+    class ArbitroFutbol implements Arbitro {
+        + pitarInicio(): void
+    }
+
+    class ArbitroBasquet implements Arbitro {
+        + pitarInicio(): void
+    }
+
+    class FutbolFactory implements TorneoFactory {
+        + crearCancha(): Cancha
+        + crearArbitro(): Arbitro
+    }
+
+    class BasquetFactory implements TorneoFactory {
+        + crearCancha(): Cancha
+        + crearArbitro(): Arbitro
+    }
+
+    FutbolFactory ..> CanchaFutbol : crea
+    FutbolFactory ..> ArbitroFutbol : crea
+    BasquetFactory ..> CanchaBasquet : crea
+    BasquetFactory ..> ArbitroBasquet : crea
+}
+@enduml
