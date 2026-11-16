@@ -1,4 +1,4 @@
-package Creacionales.FactoryMethod;
+package FactoryMethod;
 
 public class FabricaEntradaVIP extends FabricaEntradas {
     @Override

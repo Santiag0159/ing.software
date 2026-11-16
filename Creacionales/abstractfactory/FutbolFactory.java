@@ -1,4 +1,4 @@
-package Creacionales.abstractfactory;
+package abstractfactory;
 
 public class FutbolFactory implements TorneoFactory {
     @Override

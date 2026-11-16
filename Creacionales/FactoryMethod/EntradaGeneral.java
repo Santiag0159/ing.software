@@ -1,4 +1,4 @@
-package Creacionales.FactoryMethod;
+package FactoryMethod;
 
 public class EntradaGeneral implements Entrada {
     private final String comprador;

@@ -1,4 +1,4 @@
-package Creacionales.abstractfactory;
+package abstractfactory;
 
 public class MainAbstractFactory {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package Creacionales.FactoryMethod;
+package FactoryMethod;
 
 public interface Entrada {
     String getTipo();

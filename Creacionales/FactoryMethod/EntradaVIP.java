@@ -1,4 +1,4 @@
-package Creacionales.FactoryMethod;
+package FactoryMethod;
 
 public class EntradaVIP implements Entrada {
     private final String comprador;

@@ -1,4 +1,4 @@
-package Creacionales.Prototype;
+package Prototype;
 
 public class MainPrototype {
     public static void main(String[] args) {

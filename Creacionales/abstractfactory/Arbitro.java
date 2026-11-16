@@ -1,4 +1,4 @@
-package Creacionales.abstractfactory;
+package abstractfactory;
 
 public interface Arbitro {
     void pitarInicio();

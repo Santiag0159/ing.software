@@ -1,4 +1,4 @@
-package Creacionales.FactoryMethod;
+package FactoryMethod;
 
 public abstract class FabricaEntradas {
     public abstract Entrada crearEntrada(String comprador);
