@@ -1,5 +1,6 @@
 @startuml
 title Diagrama de clases - Patron Command
+skinparam classAttributeIconSize 0
 
 package "De_Comportamiento.Command" {
     interface ComandoTorneo {
@@ -13,7 +14,7 @@ package "De_Comportamiento.Command" {
     }
 
     class IniciarTorneoCommand {
-        -torneo: Torneo
+        -torneo: Torne
         +ejecutar(): void
     }
 

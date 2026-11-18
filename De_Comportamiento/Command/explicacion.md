@@ -14,3 +14,4 @@ El ejemplo encapsula las operaciones del torneo como objetos comando:
 De esta forma, quien solicita una accion no necesita llamar directamente a la
 logica del torneo. Los comandos tambien pueden ampliarse para registrar,
 encolar o deshacer solicitudes.
+

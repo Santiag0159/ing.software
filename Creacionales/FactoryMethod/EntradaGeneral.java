@@ -21,4 +21,7 @@ public class EntradaGeneral implements Entrada {
     public double getPrecio() {
         return 25000;
     }
+    public void procesarentradaBarata(){ 
+        System.out.println("Procesando entrada barata para " + comprador + " por un total de $" + getPrecio());
+    }
 }
