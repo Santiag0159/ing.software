@@ -37,4 +37,5 @@ package "ocp_bueno (Aplica OCP)" {
     MainBueno ..> CategoriaProfesional : instancia >
 }
 
+
 @enduml
