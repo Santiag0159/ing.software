@@ -1,0 +1,34 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+
+package "dip_bueno (Cumple DIP + Inyeccion de Dependencias)" {
+    interface Sorteable {
+        + sortearCruces(equipos: List<String>) : List<String>
+    }
+    interface Notificador {
+        + enviar(mensaje: String) : void
+    }
+    class ServicioTorneo {
+        - sorteo : Sorteable
+        - notificador : Notificador
+        + ServicioTorneo(sorteo: Sorteable, notificador: Notificador)
+        + realizarSorteo(equipos: List<String>) : void
+    }
+    class SorteoBarrialSimple
+    class SorteoPorOrdenAlfabetico
+    class NotificadorEmail
+    class NotificadorWhatsApp
+    class Main {
+        + {static} main(args: String[]) : void
+    }
+
+    ServicioTorneo --> Sorteable
+    ServicioTorneo --> Notificador
+    SorteoBarrialSimple ..|> Sorteable
+    SorteoPorOrdenAlfabetico ..|> Sorteable
+    NotificadorEmail ..|> Notificador
+    NotificadorWhatsApp ..|> Notificador
+    Main ..> ServicioTorneo : inyecta dependencias
+}
+@enduml
