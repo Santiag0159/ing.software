@@ -1,0 +1,18 @@
+Patron TemplateMethod: Este patron nos sirve para fijar la estructura principal en una clase 
+abstracta y deja que las subclases implententen los detalles que cambian.
+
+-Problema: Teniamos varios proceso de torneo que compartian los mismo pasos, pero el algoritmo de cruce 
+cambiaba segun el formato, duplicando codigoen varias clases.
+
+-Solucion: Se crea una clase padre que define el equeleto fijo y delegamos en métodos abstractos 
+ la parte variable para que las subclases la completen.
+
+-Consecuencia: 
+ .Evita duplicado de codigo
+ .Centraliza el control del flujo principal en la clase padre
+ .Permite crear nuevo formatos de torneo sin tocar la clase padre
+
+
+
+
+

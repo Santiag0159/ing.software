@@ -1,0 +1,27 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+
+package "isp_malo (Viola ISP)" {
+
+    interface OperacionesSorteo {
+        + sortearCruces(equipos: List<String>) : List<String>
+        + asignarCabezasDeSerie(favoritos: List<String>) : void
+        + iniciarTransmisionEnVivo(urlStream: String) : void
+    }
+
+    class SorteoBarrialSimpleMalo as "SorteoBarrialSimple" {
+        + sortearCruces(equipos: List<String>) : List<String>
+        + asignarCabezasDeSerie(favoritos: List<String>) : void
+        + iniciarTransmisionEnVivo(urlStream: String) : void
+    }
+
+    class MainMalo {
+        + {static} main(args: String[]) : void
+    }
+
+    SorteoBarrialSimpleMalo ..|> OperacionesSorteo : implementa todo (forzado)
+    MainMalo ..> OperacionesSorteo : usa >
+}
+
+@enduml

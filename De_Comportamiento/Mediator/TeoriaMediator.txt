@@ -1,0 +1,8 @@
+Problema: Los componentes de un partido (el árbitro, el cronómetro y el marcador) necesitaban comunicarse entre sí, generando una red compleja de dependencias cruzadas donde modificar uno implicaba romper los demás.
+
+Solución: Se introdujo un objeto mediator que centraliza la comunicación. Los componentes ya no se conocen entre sí; solo le notifican eventos al mediador y este coordina las acciones.
+
+Consecuencias:
+Ventajas: Desacoplamiento total de los componentes, cumplimiento del Principio de Responsabilidad Única y facilidad para agregar nuevos comportamientos en un solo lugar.
+
+Desventajas: El mediador puede volverse una clase compleja o "objeto todopoderoso" si concentra demasiadas reglas de negocio.

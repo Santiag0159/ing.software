@@ -1,0 +1,42 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+package "isp_bueno (Aplica ISP)" {
+
+    interface Sorteable {
+        + sortearCruces(equipos: List<String>) : List<String>
+    }
+
+    interface ConCabezasDeSerie {
+        + asignarCabezasDeSerie(favoritos: List<String>) : void
+    }
+
+    interface TransmitibleEnVivo {
+        + iniciarTransmisionEnVivo(urlStream: String) : void
+    }
+
+    class SorteoBarrialSimpleBueno as "SorteoBarrialSimple" {
+        + sortearCruces(equipos: List<String>) : List<String>
+    }
+
+    class SorteoCopaProfesional {
+        - cabezasDeSerie : List<String>
+        + sortearCruces(equipos: List<String>) : List<String>
+        + asignarCabezasDeSerie(favoritos: List<String>) : void
+        + iniciarTransmisionEnVivo(urlStream: String) : void
+    }
+
+    class MainBueno {
+        + {static} main(args: String[]) : void
+    }
+
+    SorteoBarrialSimpleBueno ..|> Sorteable : implementa solo lo necesario
+    SorteoCopaProfesional ..|> Sorteable : implementa
+    SorteoCopaProfesional ..|> ConCabezasDeSerie : implementa
+    SorteoCopaProfesional ..|> TransmitibleEnVivo : implementa
+
+    MainBueno ..> Sorteable : usa >
+    MainBueno ..> SorteoCopaProfesional : usa >
+}
+
+@enduml

@@ -22,7 +22,7 @@ public class Torneo {
     }
 
     public void iniciarTorneo() {
-        System.out.println("Torneo: " + nombre);
+        System.out.println("\nTorneo: " + nombre);
         if (formatoTorneo != null) {
             formatoTorneo.simularFormato(equipos);
         } else {

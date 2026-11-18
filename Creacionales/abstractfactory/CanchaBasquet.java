@@ -1,4 +1,4 @@
-package Creacionales.abstractfactory;
+package abstractfactory;
 
 public class CanchaBasquet implements Cancha {
     @Override

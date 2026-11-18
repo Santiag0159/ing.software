@@ -1,0 +1,27 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+package "ocp_malo (Viola OCP)" {
+
+    class Torneo {
+        - nombre : String
+        - tipoCategoria : String
+        + Torneo(nombre: String, tipoCategoria: String)
+        + obtenerCostoInscripcion() : double
+        + getNombre() : String
+    }
+
+    class MainMalo {
+        + {static} main(args: String[]) : void
+    }
+
+    MainMalo ..> Torneo : usa >
+    
+    note right of Torneo::obtenerCostoInscripcion
+      Viola OCP: Si se crea una nueva categoria,
+      es obligatorio modificar el codigo
+      interno de este metodo (if/else).
+    end note
+}
+
+@enduml
