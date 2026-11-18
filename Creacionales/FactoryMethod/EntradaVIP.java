@@ -21,4 +21,7 @@ public class EntradaVIP implements Entrada {
     public double getPrecio() {
         return 60000;
     }
+    public void procesarPago() {
+        System.out.println("Procesando pago de entrada VIP para " + comprador + " por un total de $" + getPrecio());
+    }
 }

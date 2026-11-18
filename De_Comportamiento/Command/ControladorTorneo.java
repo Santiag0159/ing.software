@@ -5,3 +5,4 @@ public class ControladorTorneo {
         comando.ejecutar();
     }
 }
+//Sobreescribe la funcion invocar para ejecutar el comando pasado como parametro.

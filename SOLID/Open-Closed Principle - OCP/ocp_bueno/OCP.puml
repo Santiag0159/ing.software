@@ -1,0 +1,41 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+package "ocp_bueno (Aplica OCP)" {
+
+    interface CategoriaTorneo {
+        + calcularCostoBase() : double
+    }
+
+    class CategoriaAmateur {
+        + calcularCostoBase() : double
+    }
+
+    class CategoriaProfesional {
+        + calcularCostoBase() : double
+    }
+
+    class Torneo {
+        - nombre : String
+        - categoria : CategoriaTorneo
+        + Torneo(nombre: String, categoria: CategoriaTorneo)
+        + obtenerCostoInscripcion() : double
+        + getNombre() : String
+    }
+
+    class MainBueno {
+        + {static} main(args: String[]) : void
+    }
+
+    CategoriaAmateur ..|> CategoriaTorneo : implementa
+    CategoriaProfesional ..|> CategoriaTorneo : implementa
+
+    Torneo o--> CategoriaTorneo : delega el cálculo >
+
+    MainBueno ..> Torneo : usa >
+    MainBueno ..> CategoriaAmateur : instancia >
+    MainBueno ..> CategoriaProfesional : instancia >
+}
+
+
+@enduml

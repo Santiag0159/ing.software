@@ -2,10 +2,10 @@ package FactoryMethod;
 
 public class MainFactoryMethod {
     public static void main(String[] args) {
-        FabricaEntradas fabricaGeneral = new FabricaEntradaGeneral();
-        FabricaEntradas fabricaVIP = new FabricaEntradaVIP();
+        FabricaEntradas fabricaparaPobres = new FabricaEntradaGeneral();
+        FabricaEntradas fabricaPrimeraFila = new FabricaEntradaVIP();
 
-        fabricaGeneral.venderEntrada("Ana");
-        fabricaVIP.venderEntrada("Carlos");
+        fabricaparaPobres.venderEntrada("Ana");
+        fabricaPrimeraFila.venderEntrada("Carlos");
     }
 }
